@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0D0D0D;
+    color: #FFFFFF;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #D4AF37;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background-color: rgba(212, 175, 55, 0.3);
+    color: #FFFFFF;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center bg-gold text-black font-bold rounded-lg px-8 py-4 text-base transition-all duration-200 ease-out;
+    box-shadow: 0 4px 16px rgba(212, 175, 55, 0.35);
+  }
+
+  .btn-primary:hover {
+    @apply bg-gold-dark;
+    transform: scale(1.03);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.45);
+  }
+
+  .btn-primary:active {
+    animation: btnPulse 0.3s ease-out;
+  }
+
+  .card {
+    @apply bg-gray-dark rounded-xl p-6 transition-all duration-200 ease-out;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    border-left: 2px solid #D4AF37;
+  }
+
+  .card:hover {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+    border-left-color: #D4AF37;
+  }
+
+  .card-premium {
+    position: relative;
+    transition: all 0.3s ease-out;
+  }
+
+  .card-premium::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 13px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0) 0%, rgba(212, 175, 55, 0.15) 50%, rgba(212, 175, 55, 0) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: -1;
+  }
+
+  .card-premium:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.1);
+    border-left-color: #D4AF37;
+  }
+
+  .card-premium:hover::before {
+    opacity: 1;
+  }
+
+  .btn-glow {
+    position: relative;
+    transition: all 0.3s ease-out;
+  }
+
+  .btn-glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0));
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    z-index: -1;
+    filter: blur(8px);
+  }
+
+  .btn-glow:hover::after {
+    opacity: 1;
+  }
+
+  .section-container {
+    @apply max-w-container mx-auto px-6 md:px-section-x;
+  }
+
+  .section-padding {
+    @apply py-10 md:py-section-y;
+  }
+
+  .section-divider {
+    @apply w-full h-px opacity-30;
+    background-color: #D4AF37;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes btnPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.97); }
+  100% { transform: scale(1); }
+}
+
+@keyframes floatPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(212, 175, 55, 0); }
+}
+
+/* Diagonal gold lines background decoration */
+.bg-diagonal-lines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 60px,
+    rgba(212, 175, 55, 0.03) 60px,
+    rgba(212, 175, 55, 0.03) 61px
+  );
+}
+
+/* Geometric texture overlay */
+.bg-geometric {
+  background-image:
+    linear-gradient(rgba(212, 175, 55, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 175, 55, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
